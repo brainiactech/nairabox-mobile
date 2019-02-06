@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M2.16108977,10.5 C2.84775998,13.645182 5.64888139,16 9,16 C12.3511186,16 15.15224,13.645182 15.8389102,10.5 L15.3642842,10.5 C14.6863631,13.3874255 12.0942337,15.5371901 9,15.5371901 C5.90576626,15.5371901 3.31363694,13.3874255 2.63571577,10.5 L2.16108977,10.5 Z M2.16108977,7.5 C2.84775998,4.35481799 5.64888139,2 9,2 C12.3511186,2 15.15224,4.35481799 15.8389102,7.5 L15.3642842,7.5 C14.6863631,4.61257452 12.0942337,2.46280992 9,2.46280992 C5.90576626,2.46280992 3.31363694,4.61257452 2.63571577,7.5 L2.16108977,7.5 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(9.000000, 9.000000) rotate(-45.000000) translate(-9.000000, -9.000000) "></path>
+    </g>
+</svg>

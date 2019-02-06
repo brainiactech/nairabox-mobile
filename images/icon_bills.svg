@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M24,103.723577 L24,25 L88.9995608,25 C97.2840746,25 104,31.7174449 104,40.0004392 L104,43 L63,43 L63,48 L104,48 L104,63 L63,63 L63,68 L104,68 L104,83 L40,83 L40,88 L104,88 L104,104.130081 L96.3,101 L88.1,104.333333 L79.9,101 L71.7,104.333333 L63.5,101 L55.3,104.333333 L47.1,101 L38.9,104.333333 L30.7,101 L24,103.723577 Z M46,53 C49.8659932,53 53,49.8659932 53,46 C53,42.1340068 49.8659932,39 46,39 C42.1340068,39 39,42.1340068 39,46 C39,49.8659932 42.1340068,53 46,53 Z M46,73 C49.8659932,73 53,69.8659932 53,66 C53,62.1340068 49.8659932,59 46,59 C42.1340068,59 39,62.1340068 39,66 C39,69.8659932 42.1340068,73 46,73 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+    </g>
+</svg>

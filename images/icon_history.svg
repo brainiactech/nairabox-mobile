@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="53px" height="52px" viewBox="0 0 53 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Menu" sketch:type="MSArtboardGroup" transform="translate(-33.000000, -295.000000)">
+            <g id="icon_history" sketch:type="MSLayerGroup" transform="translate(41.000000, 304.000000)" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round">
+                <path d="M7.72311895,27.5816888 C10.7072444,30.7495598 14.9408442,32.7272727 19.6363636,32.7272727 C28.6737505,32.7272727 36,25.4010232 36,16.3636364 C36,7.32624955 28.6737505,0 19.6363636,0 C10.5989768,0 3.27272727,7.32624955 3.27272727,16.3636364" id="Oval-14" sketch:type="MSShapeGroup"></path>
+                <path d="M19.6868608,4.77357955 L19.6868608,16.6079992 L12.5144299,22.5264773" id="Path-747" sketch:type="MSShapeGroup"></path>
+                <path d="M0.667973803,14.9861556 L3.42293529,17.7411171" id="Line-10" sketch:type="MSShapeGroup"></path>
+                <path d="M6.45020802,14.9861556 L3.69524653,17.7411171" id="Line-9" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

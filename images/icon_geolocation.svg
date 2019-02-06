@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="155px" height="102px" viewBox="0 0 155 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.2 (33826) - http://www.bohemiancoding.com/sketch -->
+    <title>Geolocation icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Geolocation" transform="translate(-110.000000, -173.000000)">
+            <g id="Geolocation-icon" transform="translate(110.000000, 173.000000)">
+                <path d="M24.9709426,43.1915953 C26.1247398,40.6820863 29.3010842,38.6477273 32.0633289,38.6477273 L122.60228,38.6477273 C125.3655,38.6477273 128.536889,40.6734293 129.694667,43.1915953 L154.24367,96.5856774 C155.397467,99.0951864 154.099267,101.129545 151.33221,101.129545 L3.33339924,101.129545 C0.571647051,101.129545 -0.735838197,99.1038434 0.421939271,96.5856774 L24.9709426,43.1915953 Z" id="Rectangle-5" fill="#97D692"></path>
+                <path d="M51.1072122,38.6477273 L53.9393021,38.6477273 L45.3559412,101.129545 L39.503964,101.129545 L51.1072122,38.6477273 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <path d="M102.060698,38.6477273 L104.892788,38.6477273 L116.496036,101.129545 L110.644059,101.129545 L102.060698,38.6477273 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <rect id="Rectangle-6" fill="#FFFFFF" x="37" y="79" width="71" height="4"></rect>
+                <polygon id="Rectangle-6-Copy" fill="#FFFFFF" points="97 49 127 49 128 51 97 51"></polygon>
+                <path d="M89,23 C89,16.9248678 84.0751322,12 78,12 C71.9248678,12 67,16.9248678 67,23 C67,29.0751322 71.9248678,34 78,34 C84.0751322,34 89,29.0751322 89,23 Z M55,23 C55,10.2974508 65.2974508,0 78,0 C90.7025492,0 101,10.2974508 101,23 C101,35.7025492 90.7025492,46 78,46 C65.2974508,46 55,35.7025492 55,23 Z" id="Combined-Shape" fill="#DE4A09"></path>
+                <polygon id="Rectangle" fill="#DE4A09" points="98 34 78 67 58 34"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

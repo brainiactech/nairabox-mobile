@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M63.5,117 C88.0766714,117 108,97.0766714 108,72.5 C108,47.9233286 88.0766714,28 63.5,28 C38.9233286,28 19,47.9233286 19,72.5 C19,97.0766714 38.9233286,117 63.5,117 Z M63.5,127 C33.4004811,127 9,102.599519 9,72.5 C9,42.4004811 33.4004811,18 63.5,18 C93.5995189,18 118,42.4004811 118,72.5 C118,102.599519 93.5995189,127 63.5,127 Z" id="Oval" fill="#979797"></path>
+        <polygon id="Line" fill="#979797" points="59 3 59 22 69 22 69 3"></polygon>
+        <path d="M58.5305862,73.3841816 C57.8376212,77.0379972 60.2939177,80 64,80 L64,80 C67.7136388,80 70.2618158,77.0205905 69.6941176,73.3620912 L64.6724138,41 L58.5305862,73.3841816 Z" id="Line-Copy-4" fill="#979797"></path>
+        <polygon id="Line-Copy-3" fill="#979797" transform="translate(64.000000, 6.500000) rotate(90.000000) translate(-64.000000, -6.500000) " points="59 -3 59 16 69 16 69 -3"></polygon>
+        <polygon id="Line-Copy" fill="#979797" transform="translate(104.000000, 31.500000) rotate(45.000000) translate(-104.000000, -31.500000) " points="99 22 99 41 109 41 109 22"></polygon>
+        <polygon id="Line-Copy-2" fill="#979797" transform="translate(24.000000, 31.500000) scale(-1, 1) rotate(45.000000) translate(-24.000000, -31.500000) " points="19 22 19 41 29 41 29 22"></polygon>
+    </g>
+</svg>

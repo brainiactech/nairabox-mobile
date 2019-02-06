@@ -1,0 +1,1786 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>nairabox</title>
+		<link rel="stylesheet" href="assets/app.css" type="text/css" />
+		<link rel="stylesheet" href="views/views.css" type="text/css" />
+		<link rel="apple-touch-icon-precomposed" href="icon.png" />
+	</head>
+
+	<body class="body" onresize="views.resize()">
+
+		<div id="splashOverlay" style="width:100%; height:100%; background:#FFF; z-index:10000; position:fixed; display: block;">
+			<div id="splashOverlayMessage" style="position:fixed; bottom:40%; text-align:center; width:100%;">• • •</div>
+		</div>
+
+		<div id="busyUIView">
+			<div id="busyBlip"></div>
+		</div>
+
+		<div id="PriceUIView" onclick="app.HidePriceBar()">
+			<div id="PriceUIViewTitle"></div>
+			<div class="PriceUIViewAmount">
+				<span id="PriceUIViewAmountCurrency" class="currency"></span>
+				<span id="PriceUIViewAmount"></span>
+			</div>
+			<div class="PriceUIViewCaption">Enter your PIN to confirm this payment</div>
+		</div>
+
+		<div id="UIViews" class="views">
+
+			<div id="welcome" class="view" data-statusbar="white" data-lock="true">
+				<div id="welcomeSlides" class="swipe">
+					<div class="swipe-wrap">
+						<div>
+							<img src="images/icon_hand.png" id="pointerFinger" />
+							<img src="images/wslide0.jpg" class="slideImage" />
+							<div class="slideTextArea">
+								<div class="slideCaption large">Do it quicker with nairabox.</div>
+								<div class="slideSummary">Buy airtime, pay bills, buy movie tickets for you and friends — and so much more.</div>
+							</div>
+							<div class="slideFooterShade"></div>
+						</div>
+						<div>
+							<img src="images/wslide2.jpg" class="slideImage" />
+							<div class="slideTextArea">
+								<div class="slideCaption">Airtime Auto-Recharge</div>
+								<div class="slideSummary">Never run out of airtime again. Setup automated airtime top-up for you and your loved ones.</div>
+							</div>
+							<div class="slideFooterShade"></div>
+						</div>
+						<div>
+							<img src="images/wslide3.jpg" class="slideImage" />
+							<div class="slideTextArea">
+								<div class="slideCaption">Buy Movie &amp; Show Tickets</div>
+								<div class="slideSummary">Cinema and event tickets are now digital. You can even transfer tickets to your friends!</div>
+							</div>
+							<div class="slideFooterShade"></div>
+						</div>
+						<div>
+							<img src="images/wslide4.jpg" class="slideImage" />
+							<div class="slideTextArea">
+								<div class="slideCaption">Even better with friends</div>
+								<div class="slideSummary">Split the bill with friends and collectively pay when you dine out or hang out.</div>
+							</div>
+							<div class="slideFooterShade"></div>
+						</div>
+						<div>
+							<img src="images/wslide5.jpg" class="slideImage" />
+							<div class="slideTextArea">
+								<div class="slideCaption">Pay with nairabox</div>
+								<div class="slideSummary">Amazing discounts await you when you pay with nairabox — online and at your favourite stores.</div>
+							</div>
+							<div class="slideFooterShade"></div>
+						</div>
+					</div>
+
+					<div id="slideDots"></div>
+
+					<div class="slideFooter">
+						<div class="left" onclick="views.goto('signIn')">Login</div>
+						<div class="right" onclick="views.goto('signUp')">Create Account</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="signIn" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Account Login</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="loginPhone" class="textBox" placeholder="Your Phone Number" maxlength="11" />
+						<input type="tel" id="loginPIN" class="textBox password" placeholder="Your 4-Digit PIN" maxlength="4" />
+						<button class="button green" onclick="app.SignIn()">Login</button>
+						<div class="textLink" onclick="settings.startResetPIN(1)">Forgot PIN</div>
+					</div>
+
+					<div class="footerText" onclick="views.goto('merchantSignIn')">Are you a Nairabox Business? <b>Sign In here ›</b></div>
+				</div>
+			</div>
+
+			<div id="signUp" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Create Account</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="textBoxGroup">
+							<input type="text" id="sFname" class="textBox half capitals" placeholder="First Name" />
+							<input type="text" id="sLname" class="textBox half last capitals" placeholder="Last Name" />
+						</div>
+						<input type="tel" id="sPhone" class="textBox" placeholder="Your Mobile Phone Number" />
+						<input type="email" id="sEmail" class="textBox" placeholder="Your Email Address" />
+						<div class="formText plain">Your Date of Birth</div>
+
+						<div class="textBoxGroup">
+							<input type="tel" id="sDay" placeholder="Day" class="textBox third needsclick" maxlength="2" />
+							<select id="sMonth" class="textBox third select needsclick">
+								<option value="">Month</option>
+								<option value="01">JAN</option>
+								<option value="02">FEB</option>
+								<option value="03">MAR</option>
+								<option value="04">APR</option>
+								<option value="05">MAY</option>
+								<option value="06">JUN</option>
+								<option value="07">JUL</option>
+								<option value="08">AUG</option>
+								<option value="09">SEP</option>
+								<option value="10">OCT</option>
+								<option value="11">NOV</option>
+								<option value="12">DEC</option>
+							</select>
+							<input type="tel" id="sYear" placeholder="Year" class="textBox third needsclick last" maxlength="4" />
+						</div>
+						<button class="button green" onclick="app.SignUp()">Create My Account</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="signUpGender" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="formText plain">Do you have an invite code from a friend? If you do, please enter it below.</div>
+					<input type="text" id="sInvite" class="textBox uppercase" placeholder="Invite Code (Optional)" />
+
+					<div class="formText plain">Please Select Gender</div>
+					<div class="textBoxGroup">
+						<div class="touchButton" onclick="app.SignUp('F')">FEMALE</div>
+						<div class="touchButton last" onclick="app.SignUp('M')">MALE</div>
+					</div>
+				</div>
+				<div class="footerButton" onclick="app.SignUp('O')">SKIP ›</div>
+			</div>
+
+			<div id="activate" class="view" data-statusbar="black" data-lock="true">
+				<div class="header">
+					<div class="title">Activate Account</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="activateStatus" class="formText">We need to verify your phone number. Please enter the activation code we sent to <b id="activationPhone"></b> via SMS.</div>
+
+						<input type="tel" id="activationCode" class="textBox big" placeholder="Enter Activation Code" />
+						<button class="green" onclick="app.Activate(0)">Continue</button>
+						<button class="grey" onclick="app.CancelActivation()">Cancel &amp; Start Over</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="activateCall" class="view" data-statusbar="white">
+				<div id="activateCallInitial" class="content">
+					<div class="formText">Please note that our call may come from "Private Number", "No Caller ID" or a random local or international number.</div>
+					<button class="green" onclick="app.RequestCallMe(1)"><img src="images/icon_call.svg" class="icon" />Okay. Call Me Now</button>
+				</div>
+				<div id="activateCallProgress" class="content center" style="display: none;">
+					<img src="images/icon_call.svg" style="background-color: #28B75E; border-radius: 20em; margin: 1em 0em 2em; width: 5em; padding: 1em;" />
+					<div>Requesting Call...</div>
+				</div>
+			</div>
+
+			<div id="activateComplete" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Setup PIN</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="formText">Your PIN is a 4-digit number that will be used to confirm your payments.</div>
+
+						<input type="tel" id="activationPIN" class="textBox pin" placeholder="Choose a 4-Digit PIN" maxlength="4" />
+						<input type="tel" id="activationPINConfirm" class="textBox pin" placeholder="Confirm 4-Digit PIN" maxlength="4" />
+						<button class="green" onclick="app.Activate(1)">Activate My Account</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="activateWithCall" class="view" data-statusbar="black" data-lock="true">
+				<div class="header">
+					<div class="title">Activate Account</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="activateStatus" class="formText">We need to verify your phone number. We will call you on <b id="activationPhone"></b> to give you an activation code.</div>
+
+						<div id="activationCodeArea" style="display: none;">
+							<input type="tel" id="activationCode" class="textBox big" placeholder="Enter Activation Code" />
+							<button class="green" onclick="app.Activate(0)">Continue</button>
+						</div>
+
+						<button id="callMeButton" onclick="app.RequestCallMe()"><img src="images/icon_call.svg" class="icon" />
+							<span id="callMeLabel">Call Me</span>
+						</button>
+						<button class="grey" onclick="app.CancelActivation()">Cancel &amp; Start Over</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="authorize" class="view" data-statusbar="black" data-lock="true">
+				<div class="header">
+					<div class="title">Authorize Device</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="formText">Please authorize your account on this device by entering the code we just sent you via SMS.</div>
+						<input type="tel" id="authCode" class="textBox" placeholder="Enter Authorization Code" />
+						<button class="green" onclick="app.Authorize()">Authorize My Account</button>
+						<button class="grey" onclick="app.CancelActivation()">Cancel &amp; Start Over</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="selfie" class="view" data-statusbar="white" data-lock="true">
+				<img src="images/icon_selfie.svg" />
+				<div class="title">Take a selfie.</div>
+				<div class="summary">Please take a nice photo your friends can see. You can change this photo at anytime.</div>
+				<button onclick="app.SelectPhoto(1)">Take a Picture</button>
+				<button id="selfieFromPhotos" onclick="app.SelectPhoto(0)">Select From My Photos</button>
+				<div class="footNote" onclick="app.RequestPushPermission()">SKIP ›</div>
+			</div>
+
+			<div id="pushPermission" class="view" data-statusbar="black" data-lock="true">
+				<img src="images/icon_notification.svg" />
+				<div class="title">Never miss a beat.</div>
+				<div class="summary">Be instantly notified when you receive money, or whenever your account is debited. It's free!</div>
+				<button class="orange" onclick="app.RequestPushPermission(true)">Turn on Notifications</button>
+				<div class="footNote" onclick="app.SkipPushPermission()">SKIP ›</div>
+			</div>
+
+			<div id="pushMessage" class="view" data-statusbar="white">
+				<div id="pushBox">
+					<img src="images/nairabox_brand_color.svg" />
+					<div id="pushMessageTitle" class="title"></div>
+					<div id="pushMessageText" class="summary"></div>
+					<button class="plum" onclick="views.hideFlash('pushMessage')">Got it. Thanks.</button>
+				</div>
+			</div>
+
+			<div id="unlock" class="view" data-statusbar="black" data-lock="true">
+				<img src="images/nairabox.svg" id="pinLogo" />
+				<div id="pinStatus"></div>
+				<div id="pinDiscArea"></div>
+				<div id="pinPad">
+					<div class="pinKey" id="pinkey1">1</div>
+					<div class="pinKey" id="pinkey2">2<div class="code">ABC</div></div>
+					<div class="pinKey" id="pinkey3">3<div class="code">DEF</div></div>
+					<div class="pinKey" id="pinkey4">4<div class="code">GHI</div></div>
+					<div class="pinKey" id="pinkey5">5<div class="code">JKL</div></div>
+					<div class="pinKey" id="pinkey6">6<div class="code">MNO</div></div>
+					<div class="pinKey" id="pinkey7">7<div class="code">PQRS</div></div>
+					<div class="pinKey" id="pinkey8">8<div class="code">TUV</div></div>
+					<div class="pinKey" id="pinkey9">9<div class="code">WXYZ</div></div>
+					<div class="pinKey">
+						<img id="pinTouchID" class="pinTouchID" src="images/icon_touch.svg"  onclick="app.ShowBiometricDialog()" />
+						<div id="pinCancel" onclick="app.HidePinPadOverlay()" class="pinDelete">CANCEL</div>
+					</div>
+					<div class="pinKey" id="pinkey0">0</div>
+					<div class="pinKey" id="pinkeyDelete">
+						<div class="pinDelete">DELETE</div>
+					</div>
+				</div>
+
+				<div id="pinHelp" onclick="views.overlay('helpView', 55)">HELP</div>
+				<img id="pinPay" onclick="beam.start()" src="images/button_beam.png" />
+				<!--<img id="pinPay" src="images/promo/coke_everywhere.png" onclick="coke.start()" />-->
+				<div id="pinOptions" onclick="beam.showOfflineOptions()">OPTIONS</div>
+			</div>
+
+			<div id="unlockBeam" class="view" data-statusbar="white">
+				<div class="content">
+					<img id="unlockBeamPhoto" src="images/icon_contact.svg" class="overlayIcon small" />
+					<div id="unlockBeamName"></div>
+					<div id="unlockBeamCaption">You're in Offline Mode</div>
+					<div class="buttonList" onclick="tickets.ShowTickets()">My Tickets</div>
+					<div class="buttonList extended" id="unlockOfflineBalance">Last Known Balance
+						<div class="subtitle" id="unlockBalanceTime"></div>
+						<div class="amount">
+							<span id="unlockCurrency" class="currency"></span>
+							<span id="unlockBalance"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="account" class="view" data-statusbar="black" data-type="controller" data-target="accountMenu" data-lock="true">
+				<div id="accountHeader" class="header vanilla">
+					<img class="left" onclick="app.ShowMenu()" src="images/button_menu.svg" />
+					<div class="title">Cash Account</div>
+					<img id="accountRefresher" class="right" onclick="app.RefreshBalance()" src="images/button_refresh.svg" />
+				</div>
+
+				<div id="card">
+					<img src="images/default_card.jpg" id="base" onclick="ads.go()" />
+					<img id="accountPhoto" src="images/busy_image.svg" onclick="app.ReplacePhoto()" />
+					<div id="accountName"></div>
+					<div id="accountPromoButton">
+						<img src="images/promo/lagos_50.gif" onclick="ads.launchPromo()" />
+					</div>
+				</div>
+
+				<div class="balanceArea">
+					<div class="balanceAmount">
+						<span class="currency" id="balanceCurrency"></span>
+						<span id="balanceAmount"></span>
+					</div>
+					<div class="balanceTime">Available Cash › <span id="balanceTime"></span></div>
+				</div>
+
+				<img id="beamButton" onclick="beam.start()" src="images/button_beam.png" />
+
+				<div class="footer">
+					<div id="footerButtons">
+						<div class="button" onclick="airtime.launch()">
+							<img src="images/icon_airtime.svg" class="icon" />
+							<div class="label">Buy Airtime</div>
+						</div>
+						<!--<div class="button" onclick="transfer.start()">
+							<img src="images/icon_send.svg" class="icon" />
+							<div class="label">Send Cash</div>
+						</div>-->
+						<div class="button" onclick="views.overlay('ticketStart', 90)">
+							<img src="images/icon_ticket.svg" class="icon" />
+							<div class="label">Tickets</div>
+						</div>
+						<div class="button" onclick="wallet.launch()">
+							<img src="images/icon_funds.svg" class="icon" />
+							<div class="label">Add Cash</div>
+						</div>
+						<div class="button" onclick="transfer.getHistory()">
+							<img src="images/icon_history.svg" class="icon" />
+							<div class="label">History</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="accountMenu" class="view" data-statusbar="white">
+				<div class="links">
+					<!--<div class="link" onclick="views.hideReveal()">
+						<img src="images/icon_funds.svg" class="icon" />
+						<span class="label">Cash Account</span>
+					</div>-->
+					<div class="link" onclick="rewards.RenderAccount()">
+						<img src="images/icon_rewards.svg" class="icon" />
+						<span class="label">Rewards Account</span>
+						<!--<span class="labelNote" id="menuSavingsAmount"></span>-->
+					</div>
+					<div class="link" onclick="wallet.listCards(2)">
+						<img src="images/icon_cards.svg" class="icon" />
+						<span class="label">My Cards</span>
+					</div>
+					<div class="link" onclick="bills.open()">
+						<img src="images/icon_bills.svg" class="icon" />
+						<span class="label">Bill Payments</span>
+					</div>
+					<!--<div class="link" onclick="views.overlay('ticketStart', 80)">
+						<img src="images/icon_ticket.svg" class="icon" />
+						<span class="label">Tickets</span>
+					</div>-->
+					<!--<div class="link" onclick="contacts.show()">
+						<img src="images/icon_contacts.svg" class="icon" />
+						<span class="label">Contacts</span>
+					</div>-->
+					<div class="link" onclick="transfer.start()">
+						<img src="images/icon_send.svg" class="icon" />
+						<span class="label">Send Cash</span>
+					</div>
+					<div id="foodMenuButton" class="link" onclick="food.start()">
+						<img src="images/icon_food.svg" class="icon" />
+						<span class="label">Food</span>
+					</div>
+					<div id="uberMenuButton" class="link" onclick="uber.start()">
+						<img src="images/icon_uber.svg" class="icon" />
+						<span class="label">UBER</span>
+					</div>
+					<div id="giveMenuButton" class="link" onclick="give.start()">
+						<img src="images/icon_donate.svg" class="icon" />
+						<span class="label">Donate</span>
+					</div>
+					<div class="link" onclick="friends.showInviteCode()">
+						<img src="images/icon_invite.svg" class="icon" />
+						<span class="label">Invite Friends</span>
+					</div>
+				</div>
+
+				<div id="menuFooterArea">
+					<div class="menuFooter settings" onclick="settings.show()">
+						<img src="images/icon_settings.svg" class="icon" />
+						<span class="label">Settings</span>
+					</div>
+					<div class="menuFooter logout" onclick="app.Logout(true)">
+						<img src="images/icon_logout.svg" class="icon" />
+						<span class="label">Logout</span>
+					</div>
+				</div>
+			</div>
+
+			<div id="accountPhotoOptions" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="app.SelectPhoto(1, true)">Take a Picture</div>
+					<div class="buttonList extended" onclick="app.SelectPhoto(0, true)">Select from Photos</div>
+				</div>
+			</div>
+
+			<div id="rewardsAccount" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Rewards Account</div>
+				</div>
+
+				<div id="rewardsScrollView" class="scrollView">
+					<div id="rewardsCard">
+						<div class="balance">
+							<span id="rewardsCardBalance"></span>
+						</div>
+						<div class="rewardsBalanceDate">Balance › <span id="rewardsBalanceDate"></span></div>
+					</div>
+
+					<div id="rewardsScrollArea">
+						<div class="largeListItem group">
+							<span class="left">Rewards Earned</span>
+							<span id="rewardsTotal" class="right">···</span>
+						</div>
+
+						<div id="rewardsHistoryList"></div>
+					</div>
+				</div>
+
+				<img id="rewardsWithdrawButton" src="images/button_withdraw.png" onclick="rewards.startWithdrawal()" />
+			</div>
+
+			<div id="withdraw" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="sectionTitle">Withdraw to Cash Account</div>
+					<input type="tel" id="withdrawAmount" placeholder="Enter Amount to Withdraw" class="textBox box" />
+					<div class="sectionCaption">Please note that your Rewards Account will be debited immediately and the amount transfered to your Cash Account.</div>
+					<button class="green" onclick="rewards.withdraw()">Withdraw</button>
+					<div class="textLink" onclick="views.hideOverlay()">Cancel</div>
+				</div>
+			</div>
+
+			<div id="transferStart" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Send Cash</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="scrollViewCard green">
+						<div class="label withPhoto">You're sending cash to</div>
+						<div class="title withPhoto" id="transferStartName">Damilola</div>
+						<img id="transferStartPhoto" class="photo" />
+					</div>
+					<div class="content">
+						<input type="tel" id="transferAmount" placeholder="Enter Amount to Send" class="textBox" />
+						<input type="text" id="transferNotes" placeholder="Write a Comment (Optional)" class="textBox" maxlength="50" />
+						<button class="green" onclick="transfer.selectRoute('NAIRABOX')">Send Cash</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="transferNairabox" class="view" data-statusbar="white">
+				<div id="featuredFacesArea">
+					<div class="scrollListTitle">Recents</div>
+					<div class="sideScrollContainer">
+						<div id="featuredFaces" class="sideScroll"></div>
+					</div>
+				</div>
+				<div class="content">
+					<div id="transferNairaboxContacts" class="buttonList" onclick="transfer.showContacts()">Send Cash to Contact</div>
+					<div id="transferPhoneMenu" class="buttonList" onclick="transfer.enterPhoneNumber()">Enter a Phone Number</div>
+					<div id="transferBankMenu" class="buttonList extended" onclick="transfer.startBank()">Send Cash to Bank Account</div>
+				</div>
+			</div>
+
+			<div id="transferNairaboxNumber" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Find Contact</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="transferPhoneNumber" placeholder="Enter Phone Number" class="textBox" />
+						<button class="green" onclick="transfer.searchPhoneNumber()">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="transferBankStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="transfer.bankStart(1)">Select From Saved Accounts</div>
+					<div class="buttonList" onclick="transfer.bankStart(2)">Enter Account Details</div>
+				</div>
+			</div>
+
+			<div id="transferBank" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Bank Transfer</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<select id="bankTransferBank" class="textBox select">
+							<option value="">Select Destination Bank</option><option value="044">Access Bank</option><option value="023">Citibank</option><option value="063">Diamond Bank</option><option value="050">Ecobank</option><option value="214">FCMB</option><option value="070">Fidelity Bank</option><option value="011">First Bank</option><option value="058">GTBank</option><option value="030">Heritage Bank</option><option value="233">Jaiz Bank</option><option value="082">Keystone Bank</option><option value="076">Skye Bank</option><option value="221">Stanbic IBTC Bank</option><option value="068">Standard Chartered Bank</option><option value="232">Sterling Bank</option><option value="033">UBA</option><option value="032">Union Bank</option><option value="215">Unity Bank</option><option value="035">WEMA Bank</option><option value="057">Zenith Bank</option>
+						</select>
+						<input type="tel" id="bankTransferAccount" class="textBox" placeholder="Enter Account Number" />
+						<input type="checkbox" id="bankSave" />
+						<label for="bankSave">Save for next time</label>
+						<button class="green" onclick="transfer.fetchBankAccountName()">Verify Account</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="sendConfirmation" class="view" data-statusbar="white" data-lock="true" data-blockexit="true">
+				<div class="box">
+					<img src="images/button_close.svg" id="sendConfirmationClose" onclick="views.depose()" />
+					<div id="sendConfirmationCaption">You're sending cash to</div>
+					<img id="sendConfirmationPhoto" src="images/busy_image.svg" />
+					<div id="sendConfirmationTitle"></div>
+					<div id="sendConfirmationSubtitle"></div>
+					<div id="sendConfirmationNotes"></div>
+					<div id="sendConfirmationAmount"></div>
+					<div id="sendConfirmationFees"></div>
+				</div>
+				<img src="images/bg_send_shadow.png" class="shadow" />
+				<button id="sendConfirmationButtonContainer" class="green" onclick="transfer.confirm()">
+					<img src="images/icon_secure_lock.svg" class="icon" />
+					<span id="sendConfirmationButton">SEND CASH NOW</span>
+				</button>
+				<img src="images/busy_icon.svg" id="sendConfirmationBusy" />
+				<img src="images/bg_send_money.jpg" class="fullscreenBackground" />
+			</div>
+
+			<div id="sendComplete" class="view" data-statusbar="white" data-lock="true">
+				<div class="box">
+					<img id="sendCompletePhoto" src="images/icon_tick.svg" />
+					<div id="sendCompleteCaption">CASH SENT</div>
+					<div id="sendCompleteTitle"></div>
+					<div id="sendCompleteSubtitle"></div>
+					<div id="sendCompleteNotes"></div>
+					<div id="sendCompleteAmount"></div>
+					<div id="sendCompleteFee"></div>
+				</div>
+				<img src="images/bg_send_shadow.png" class="shadow" />
+				<button class="green" onclick="transfer.complete()">OKAY</button>
+				<img src="images/bg_send_money.jpg" class="fullscreenBackground" />
+			</div>
+
+			<div id="contactPicker" class="view" data-statusbar="white">
+				<div class="scrollViewContent">
+					<div id="contactPickerName"></div>
+					<div id="contactPickerContacts"></div>
+				</div>
+			</div>
+
+			<div id="contactOptions" class="view" data-statusbar="white">
+				<div class="content">
+					<img id="contactOptionPhoto" src="images/icon_contact.svg" class="overlayIcon small" />
+					<div id="contactOptionsName"></div>
+					<div id="contactOptionsPhone"></div>
+					<div class="buttonList" onclick="contacts.interact('AIRTIME')">Buy Airtime</div>
+					<div class="buttonList" onclick="contacts.interact('TICKET')">Buy Digital Ticket</div>
+					<div id="contactOptionInvite" class="buttonList extended" onclick="contacts.interact('INVITE')">Invite to Nairabox</div>
+				</div>
+			</div>
+
+			<div id="historyView" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Account History</div>
+					<img id="historyRefresher" class="right" onclick="transfer.getHistory()" src="images/button_refresh.svg" />
+				</div>
+
+				<div class="scrollView" id="historyList"></div>
+			</div>
+
+			<div id="list" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div id="listTitle" class="title"></div>
+				</div>
+
+				<div class="scrollView" id="listContent"></div>
+			</div>
+
+			<div id="subList" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div id="subListTitle" class="title"></div>
+				</div>
+
+				<div class="scrollView" id="subListContent"></div>
+			</div>
+
+			<div id="airtimeStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="featuredList" id="lastRecharge" onclick="airtime.start(5)">
+						<div class="title">Repeat your last recharge?</div>
+						<img class="image" id="lastRechargeNetwork" src="images/networks/icon_mtn.jpg" />
+						<div class="subtitle" id="lastRechargeName"></div>
+						<div class="caption" id="lastRechargePhone"></div>
+						<div class="amount" id="lastRechargeAmount"></div>
+						<div class="button" id="repeat">REPEAT</div>
+					</div>
+					<div class="buttonList" onclick="airtime.start(1)">Buy Airtime For Myself</div>
+					<div class="buttonList" onclick="airtime.start(4)">Automatic Recharge</div>
+					<div class="buttonList" onclick="airtime.start(2)">Select From My Contacts</div>
+					<div class="buttonList extended" onclick="airtime.start(3)">Enter a Phone Number</div>
+				</div>
+			</div>
+
+			<div id="airtimePayment" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Buy Airtime</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="airtimeName">Contact's Name</div>
+
+						<div class="descriptiveItem">
+							<div id="airtimeNetwork" class="title" data-value="">Select a Network</div>
+							<div class="networks"><!--
+								--><img id="atAIRTEL" src="images/networks/icon_airtel.jpg" class="network" onclick="airtime.setNetwork('AIRTEL')" /><!--
+								--><img id="at9MOBILE" src="images/networks/icon_etisalat.jpg" class="network" onclick="airtime.setNetwork('9MOBILE')" /><!--
+								--><img id="atGLO" src="images/networks/icon_glo.jpg" class="network" onclick="airtime.setNetwork('GLO')" /><!--
+								--><img id="atMTN" src="images/networks/icon_mtn.jpg" class="network end" onclick="airtime.setNetwork('MTN')" /><!--
+							--></div>
+						</div>
+
+						<input type="tel" id="airtimePhone" class="textBox" placeholder="Enter Phone Number" />
+						<input type="tel" id="airtimeAmount" class="textBox" placeholder="Enter Amount" />
+						<button class="green" onclick="airtime.verify()">Buy Airtime</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="autoRecharge" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Auto-Recharge</div>
+					<div class="rightButton" onclick="views.overlay('autoRechargeStart', 30)">Add New</div>
+				</div>
+
+				<div id="autoRechargeEmpty" class="listEmptyState">
+					<img src="images/icon_airtime.svg" />
+					<div class="title">Never run out of airtime again</div>
+					<div class="summary">Auto-Recharge allows you schedule automatic airtime recharge for you and your friends.</div>
+					<div class="hint">Tap "Add New" to create a new Auto-Recharge entry. You can add as many as you like!</div>
+				</div>
+				<div id="autoRechargeList" class="scrollView"></div>
+			</div>
+
+			<div id="autoRechargeStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="airtime.startAddAutoRecharge(true)">Add Myself</div>
+					<div class="buttonList extended" onclick="airtime.startAddAutoRecharge()">Add a Contact</div>
+				</div>
+			</div>
+
+			<div id="addAutoRecharge" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Setup Auto-Recharge</div>
+				</div>
+				<div class="scrollView">
+					<div class="content">
+						<div class="textBox select" id="autoRechargePhone" onclick="airtime.selectAutoRechargeContact()">Select a Contact</div>
+						<select id="autoRechargeNetwork" class="textBox select">
+							<option value="">Select a Network</option><option value="AIRTEL">Airtel</option><option value="9MOBILE">9MOBILE</option><option value="GLO">Glo</option><option value="MTN">MTN</option><option value="VISAFONE">Visafone</option>
+						</select>
+						<input type="tel" id="autoRechargeAmount" placeholder="Enter Amount to Recharge" class="textBox needsclick" />
+						<select id="autoRechargeFrequency" onchange="airtime.selectAutoRechargeFrequency()" class="textBox select needsclick">
+							<option value="">Select Recharge Frequency</option>
+							<option value="DAILY">Every Day</option>
+							<option value="WEEKLY">Every Week</option>
+							<option value="MONTHLY">Every Month</option>
+						</select>
+						<select id="autoRechargeDay" class="textBox select needsclick">
+							<option value="">Select Day to Recharge</option>
+							<option value="SUNDAY">On Sunday</option>
+							<option value="MONDAY">On Monday</option>
+							<option value="TUESDAY">On Tuesday</option>
+							<option value="WEDNESDAY">On Wednesday</option>
+							<option value="THURSDAY">On Thursday</option>
+							<option value="FRIDAY">On Friday</option>
+							<option value="SATURDAY">On Saturday</option>
+						</select>
+						<select id="autoRechargeDate" class="textBox select needsclick">
+							<option value="">Select Date to Recharge</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+						</select>
+						<button onclick="airtime.saveAutoRecharge()">Save Auto-Recharge</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="removeAutoRecharge" class="view" data-statusbar="white">
+				<div class="content">
+					<div id="removeAutoRechargeID" class="buttonList extended">Delete this Schedule</div>
+				</div>
+			</div>
+
+			<div id="ticketStart" class="view" data-statusbar="white">
+				<div class="ticketLink" onclick="tickets.browse('CINEMA')">
+					<img src="images/ticket_cinema.svg" class="icon" />
+					<div class="label">Buy Cinema Tickets</div>
+				</div>
+				<hr class="divider" />
+				<div class="ticketLink" onclick="tickets.browse('EVENT')">
+					<img src="images/ticket_event.svg" class="icon" />
+					<div class="label">Buy Event Tickets</div>
+				</div>
+				<hr class="divider" />
+				<div class="ticketLink" onclick="tickets.ShowTickets()">
+					<img src="images/ticket_etickets.svg" class="icon" />
+					<div class="label">My Tickets</div>
+				</div>
+			</div>
+
+			<div id="billStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="bills.start(1)">Make a New Bill Payment</div>
+					<div class="buttonList extended" onclick="bills.start(2)">Select From My Saved Bills</div>
+					<!--<div class="buttonList" onclick="bills.start(3)">Automatic Bill Payments</div>
+					<div class="buttonList" onclick="bills.start(4)">Split the Bill<span class="powerDecimals">&reg;</span></div>-->
+				</div>
+			</div>
+
+			<div id="billPayment" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Bill Payment</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="billTitle">Title</div>
+						<div id="billSubtitle">Subtitle</div>
+						<input type="tel" id="billAmount" class="textBox" placeholder="Enter Amount" />
+						<input type="text" id="billAccount" class="textBox" placeholder="Decoder AR Number" />
+						<input type="checkbox" id="billSave" />
+						<label for="billSave">Save for next time</label>
+						<button class="green" onclick="bills.verify()">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="directDebit" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Automatic Bills</div>
+					<div class="rightButton" onclick="views.overlay('directDebitStart', 30)">Add New</div>
+				</div>
+
+				<div id="directDebitEmpty" class="listEmptyState">
+					<img src="images/icon_bills.svg" />
+					<div class="title">Pay your bills without stress</div>
+					<div class="summary">Setup your monthly bills here and nairabox will make the payments for you every month. Automatically.</div>
+					<div class="hint">Tap "Add New" to setup a new bill. You can add as many as you like!</div>
+				</div>
+				<div id="directDebitList" class="scrollView"></div>
+			</div>
+
+			<div id="directDebitStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="airtime.startAddAutoRecharge(true)">Add Myself</div>
+					<div class="buttonList" onclick="airtime.startAddAutoRecharge()">Add a Contact</div>
+				</div>
+			</div>
+
+			<div id="addDirectDebit" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Setup Automatic Bill</div>
+				</div>
+				<div class="scrollView">
+					<div class="content">
+						<select id="directDebitBiller" class="textBox select" onchange="bills."></select>
+						<select id="directDebitProduct" class="textBox select"></select>
+						<input type="tel" id="directDebitAmount" placeholder="Enter Amount to Pay" class="textBox" />
+						<select id="directDebitDate" class="textBox select">
+							<option value="">Select Payment Date</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option>
+						</select>
+						<button onclick="bills.saveDirectDebit()">Save Automatic Bill</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="removeDirectDebit" class="view" data-statusbar="white">
+				<div class="content">
+					<div id="removeDirectDebitID" class="buttonList">Delete this Schedule</div>
+				</div>
+			</div>
+
+			<div id="settingsView" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Help &amp; Settings</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="settingsTouchID" class="buttonList" onclick="settings.toggleTouchID()">
+							<label for="settingsEnableTouchID" class="extended">Enable Login with Touch ID</label>
+							<input type="checkbox" id="settingsEnableTouchID" />
+						</div>
+						<div class="buttonList" onclick="settings.toggleOfflineBalance()">
+							<label for="settingsOfflineBalance" class="extended">Show Last Known Balance</label>
+							<input type="checkbox" id="settingsOfflineBalance" />
+						</div>
+						<div class="buttonList" onclick="settings.startChangePIN()">Change Account PIN</div>
+						<div class="buttonList" onclick="settings.showVersionInformation()">App Version Info</div>
+						<div class="buttonList" onclick="settings.startFeedback()">Send Feedback</div>
+						<div class="buttonList" onclick="views.goto('customerCare')">Contact Customer Care</div>
+						<div class="buttonList" onclick="app.SignOut()">Sign Out of this Device</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="changePin" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Change Account PIN</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="formText">Note that your PIN will be updated immediately.</div>
+						<input type="tel" id="changeOldPin" class="textBox pin" placeholder="Enter Current PIN" />
+						<input type="tel" id="changeNewPin" class="textBox pin" placeholder="Choose a new PIN" maxlength="4" />
+						<input type="tel" id="changeNewPinConfirm" class="textBox pin" placeholder="Confirm new PIN" maxlength="4" />
+						<button class="green" onclick="settings.ChangePIN()">Change Account PIN</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="startResetPin" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="settings.ResetPIN(3)">Reset PIN by Email</div>
+					<div class="buttonList" onclick="settings.startResetPIN(2)">Reset PIN by Date of Birth</div>
+					<div class="buttonList extended" onclick="views.goto('customerCare')">Contact Customer Care</div>
+				</div>
+			</div>
+
+			<div id="resetPin" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Reset Account PIN</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="resetPinEnterPhone">
+							<div class="formText">Please enter your Nairabox phone number to begin.</div>
+							<input type="tel" id="resetPinPhone" class="textBox" placeholder="Enter Phone Number" />
+							<button class="green" onclick="settings.startResetPIN()">Continue</button>
+						</div>
+						<div id="resetPinWithEmail">
+							<div id="resetPinEmailMessage" class="formText"></div>
+							<input type="text" id="emailCode" class="textBox" placeholder="Enter Account Recovery Code" />
+							<button class="green" onclick="settings.ResetPIN(1)">Continue</button>
+							<div class="sectionCaption">If you don't see the email in your mailbox, kindly also check your SPAM/Junk folder.</div>
+						</div>
+
+						<div id="resetPinWithBirthday">
+							<div class="formText">Please enter your date of birth.</div>
+							<div class="textBoxGroup">
+								<input type="tel" id="resetBirthDay" placeholder="Day" class="textBox third needsclick" maxlength="2" />
+								<select id="resetBirthMonth" class="textBox third select needsclick">
+									<option value="">Month</option>
+									<option value="01">JAN</option>
+									<option value="02">FEB</option>
+									<option value="03">MAR</option>
+									<option value="04">APR</option>
+									<option value="05">MAY</option>
+									<option value="06">JUN</option>
+									<option value="07">JUL</option>
+									<option value="08">AUG</option>
+									<option value="09">SEP</option>
+									<option value="10">OCT</option>
+									<option value="11">NOV</option>
+									<option value="12">DEC</option>
+								</select>
+								<input type="tel" id="resetBirthYear" placeholder="Year" class="textBox third needsclick last" maxlength="4" />
+							</div>
+							<button class="green" onclick="settings.ResetPIN(2)">Continue</button>
+						</div>
+
+						<div id="resetPinComplete">
+							<div class="formText">Choose a new PIN for your account.</div>
+							<input type="tel" id="resetNewPin" class="textBox pin" placeholder="Choose a new PIN" maxlength="4" />
+							<input type="tel" id="resetNewPinConfirm" class="textBox pin" placeholder="Confirm new PIN" maxlength="4" />
+							<button class="green" onclick="settings.ResetPIN(4)">Reset Account PIN</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="feedback" class="view" data-statusbar="white">
+				<div id="title">Send Feedback</div>
+				<div id="button" onclick="settings.SendFeedback()">Send</div>
+
+				<textarea id="feedbackText" placeholder="We'd be glad to hear from you. Please write your feedback here..."></textarea>
+			</div>
+
+			<div id="customerCare" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Customer Care</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="formText">Our Customer Care line is open on weekdays (Mondays — Fridays) from 9 am to 5 pm.</div>
+						<button class="green" onclick="settings.contact(1)" class="needsclick">Call: 0908 0000 381</button>
+						<button class="green" onclick="settings.contact(2)" class="needsclick">Email: support@nairabox.com</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="barcodeView" class="view" data-statusbar="white" data-lock="true">
+				<img id="titleLabel" src="images/nairabox_pay.svg" />
+				<div id="qrBoxArea">
+					<div id="qrBeamStatus" class="status"></div>
+					<div id="qrBox"></div>
+					<img id="qrPlaceholder" src="images/qr_placeholder.png" />
+					<div class="help">To pay with nairabox, simply show this code to the cashier at checkout.</div>
+				</div>
+
+				<img id="qrBeamDone" onclick="beam.hidePaymentCode()" src="images/button_paycode_hide.svg" />
+				<img src="images/bg_send_money.jpg" class="fullscreenBackground" />
+			</div>
+
+			<div id="beamProgress" class="view" data-statusbar="white" data-lock="true">
+				<img id="beamProgressTick" class="beamProgressIcon" src="images/icon_tick_white.svg" />
+				<div id="beamProgressStatus"></div>
+				<img id="beamProgressBeam" class="beamProgressIcon" src="images/icon_beam_white.svg" />
+				<div id="beamProgressRing1" class="beamProgressRing"></div>
+				<div id="beamProgressRing2" class="beamProgressRing"></div>
+				<div id="beamProgressRing3" class="beamProgressRing"></div>
+				<div id="beamProgressMessage"></div>
+
+				<button id="beamProgressButton" class="beamProgressButton" onclick="beam.swapModes()">
+					<img class="icon" src="images/icon_barcode.svg" /> <span id="beamProgressButtonLabel">SHOW MY BARCODE</span>
+				</button>
+				<div id="beamProgressCancel" class="footerButton" onclick="beam.cancel()">CANCEL</div>
+				<div id="beamProgressDone" class="footerButton" onclick="beam.complete()">OKAY</div>
+			</div>
+
+			<div id="helpView" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="settings.startResetPIN(1)">Forgot PIN</div>
+					<div class="buttonList" onclick="settings.showVersionInformation()">App Version Info</div>
+					<div class="buttonList" onclick="settings.startFeedback()">Send Feedback</div>
+					<div class="buttonList" onclick="views.goto('customerCare')">Contact Customer Care</div>
+					<div class="buttonList extended" onclick="app.SignOut()">Sign Out of this Device</div>
+				</div>
+			</div>
+
+			<div id="ticketShop" class="view" data-statusbar="white">
+				<div class="header lightContent">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Ticket Store</div>
+					<img id="ticketsRefresher" class="right" onclick="tickets.start()" src="images/button_refresh_white.svg" />
+				</div>
+
+				<div class="scrollViewFull">
+					<img id="ticketShopBanner" class="ticketBanner" src="images/busy_bank_image.svg" />
+
+					<div class="ticketPostersTitle">
+						<span>Featured Movies</span>
+						<div onclick="tickets.browse('CINEMA')" class="all">SHOW ALL MOVIES ›</div>
+					</div>
+					<div id="ticketPostersCinema" class="sideScrollContainer"></div>
+
+					<div class="ticketPostersTitle">
+						<span>Featured Events</span>
+						<div onclick="tickets.browse('EVENT')" class="all">SHOW ALL EVENTS ›</div>
+					</div>
+					<div id="ticketPostersEvents" class="sideScrollContainer"></div>
+				</div>
+			</div>
+
+			<div id="ticketShopSection" class="view" data-statusbar="white">
+				<div class="header lightContent">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title" id="ticketShotSectionTitle"></div>
+				</div>
+
+				<div class="scrollViewFull">
+					<img id="ticketShopSectionBanner" class="ticketBanner" src="images/busy_bank_image.svg" />
+					<div id="ticketPosters"></div>
+				</div>
+			</div>
+
+			<div id="ticketInfoCinema" class="view" data-statusbar="white">
+				<div class="header lightContent">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Buy Movie Ticket</div>
+				</div>
+
+				<div class="scrollViewFull content">
+					<div id="ticketInfoPosterArea" class="poster">
+						<div class="images">
+							<img id="ticketInfoArtwork" src="" class="artwork" />
+							<img src="images/ticket_placeholder.png" class="placeholder" />
+						</div>
+					</div>
+					<div id="ticketInfoArea">
+						<div id="ticketInfoTitle"></div>
+						<div id="ticketInfoType"></div>
+						<span id="ticketInfoAge"></span>
+						<span id="ticketInfoGenre"></span>
+						<div id="ticketInfoRuntime"></div>
+						<button id="ticketWatchTrailer" class="small orange" onclick="tickets.watchTrailer()"><img src="images/icon_play.svg" class="icon" />WATCH TRAILER</button>
+					</div>
+
+					<button id="ticketBuyButton" class="blue base" onclick="tickets.showOptions('CINEMA')"><img src="images/icon_ticket.svg" class="icon" />BUY CINEMA TICKET</button>
+
+					<div id="ticketInfoSummary"></div>
+					<div id="ticketPurchaseArea">
+						<select id="selectTicketCinema" class="textBox light select needsclick" onchange="tickets.update('CINEMA')">
+							<option value="">Select a Cinema</option>
+						</select>
+						<select id="selectTicketDate" class="textBox light select left needsclick" onchange="tickets.update('DATE')">
+							<option value="">Select Date</option>
+						</select>
+						<select id="selectTicketTime" class="textBox light select right needsclick" onchange="tickets.update('TIME')">
+							<option value="">Select Time</option>
+						</select>
+
+						<div id="ticketStepperContainer">
+							<div class="ticketStepper">
+								<div>Adults</div>
+								<div id="ticketAdultsCount" class="select">0</div>
+								<select id="ticketAdults" onchange="tickets.count(this.id)" class="needsclick"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+								<div><span class="currency"></span> <span id="ticketAdultsPrice"></span></div>
+							</div>
+							<div class="ticketStepper">
+								<div>Students</div>
+								<div id="ticketStudentsCount" class="select">0</div>
+								<select id="ticketStudents" onchange="tickets.count(this.id)" class="needsclick"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+								<div><span class="currency"></span> <span id="ticketStudentsPrice"></span></div>
+							</div>
+							<div class="ticketStepper">
+								<div>Children</div>
+								<div id="ticketChildrenCount" class="select">0</div>
+								<select id="ticketChildren" onchange="tickets.count(this.id)" class="needsclick"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+								<div><span class="currency"></span> <span id="ticketChildrenPrice"></span></div>
+							</div>
+						</div>
+
+						<button id="ticketPayButton" class="base" onclick="tickets.confirm()">Pay <span class="currency"></span> <span id="ticketTotalPrice"></span></button>
+					</div>
+				</div>
+			</div>
+
+			<div id="ticketInfoEvent" class="view" data-statusbar="white">
+				<div class="header lightContent">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Buy Ticket</div>
+				</div>
+
+				<div class="scrollViewFull content">
+					<div id="ticketInfoPosterArea" class="poster">
+						<div class="images">
+							<img id="ticketInfoArtwork" src="" class="artwork" />
+							<img src="images/ticket_placeholder.png" class="placeholder" />
+						</div>
+					</div>
+					<div id="ticketInfoArea">
+						<div id="ticketInfoTitle"></div>
+						<div id="ticketInfoVenue"></div>
+						<span id="ticketInfoGenre"></span>
+						<div id="ticketInfoTime"></div>
+					</div>
+
+					<button id="ticketBuyButton" class="blue base" onclick="tickets.showOptions('EVENT')"><img src="images/icon_ticket.svg" class="icon" />BUY TICKET</button>
+
+					<div id="ticketInfoSummary"></div>
+					<div id="ticketPurchaseArea">
+						<select id="selectTicketClass" class="textBox large select" onchange="tickets.updateEvent(this)">
+							<option value="">Class</option>
+						</select>
+						<select id="selectTicketCount" class="textBox large select" onchange="tickets.updateEvent(this)">
+							<option value="0">Quantity</option>
+							<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+						</select>
+
+						<button id="ticketPayButton" class="base" onclick="tickets.confirmEvent()">Pay <span class="currency"></span> <span id="ticketTotalPrice"></span></button>
+					</div>
+				</div>
+			</div>
+
+			<div id="myTicketsList" class="view" data-statusbar="white">
+				<div class="header black">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">My Tickets</div>
+					<img id="ticketsRefresher" class="right" onclick="tickets.Refresh()" src="images/button_refresh_white.svg" />
+				</div>
+
+				<div class="scrollView" id="myTicketsListContent">
+				</div>
+			</div>
+
+			<div id="ticketBarcodeView" class="view" data-statusbar="white">
+				<div id="qrBox"></div>
+				<img class="qrBoxShadow" src="images/bg_send_shadow.png" />
+				<img class="ticketOptions" src="images/button_ticket_options.svg" onclick="views.overlay('ticketOptions', 42)" />
+
+				<div id="beamTicketInfoArea">
+					<div id="ticketInfoTitle"></div>
+					<div id="ticketInfoSubtitle"></div>
+					<div id="ticketClassCount"></div>
+					<div id="ticketInfoStatus">VALID</div>
+				</div>
+
+				<img class="closeButton" onclick="views.back()" src="images/button_close.svg" />
+				<img src="images/shade_white.png" class="ticketFooterShade" />
+				<img id="ticketPosterBackground" class="fullscreenBackground auto" />
+			</div>
+
+			<div id="ticketOptions" class="view" data-statusbar="white">
+				<div class="content">
+					<img src="images/icon_gift.svg" class="overlayIcon extended small" />
+					<div class="buttonList topDivider extended" onclick="tickets.transfer(1)">Select a Contact to Gift</div>
+					<!--<div class="buttonList" onclick="tickets.transfer(2)">Enter a Phone Number</div>-->
+				</div>
+			</div>
+
+			<div id="walletStart" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="featuredList" onclick="wallet.start(1)">
+						<div class="title" id="linkedCardTitle"></div>
+						<img class="image" id="linkedCardType" src="images/networks/icon_visa.png" />
+						<div class="subtitle" id="linkedCardBank"></div>
+						<div class="caption" id="linkedCardPAN"></div>
+						<div class="button" id="linkedCardButton">ADD CASH</div>
+					</div>
+					<div class="buttonList" id="otherCard" onclick="wallet.start(6)">Use another ATM/Debit Card</div>
+					<div class="buttonList" onclick="wallet.start(2)">Add Cash via QuickTeller</div>
+					<div class="buttonList" onclick="wallet.start(3)">Bank Transfer &amp; Cash Deposit</div>
+					<div class="buttonList extended" onclick="wallet.start(4)">Add Cash at an ATM</div>
+				</div>
+			</div>
+
+			<div id="walletCardList" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">My ATM/Bank Cards</div>
+					<img class="right" src="images/icon_secure_lock.svg" />
+				</div>
+
+				<div class="scrollView" id="walletCardListContent"></div>
+			</div>
+
+			<div id="addCashCard" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Add Cash from Card</div>
+					<img class="right" src="images/icon_secure_lock.svg" />
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="sectionCaption lean" id="addCashCardBank"></div>
+						<div class="sectionTitle" id="addCashCardSource"></div>
+						<input type="tel" id="addCashCardAmount" placeholder="Enter Amount to Add" class="textBox box needsclick" />
+						<div class="sectionCaption center">
+							Gateway Fees: <span id="gatewayFee"></span><br />
+							Total Amount: <strong id="totalDebit"></strong>
+						</div>
+						<button class="green" onclick="wallet.process(1)"><img src="images/icon_secure_lock.svg" class="icon" />Add Cash</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="advertiseBankCard" class="view" data-statusbar="white" data-lock="true">
+				<div class="headlessTitle">Add an ATM/Bank Card</div>
+				<div class="headlessContainer">
+					<img class="bankCardSample" src="images/element_card.png" />
+					<div class="headlessCaption">Securely add an ATM/Bank Card to your nairabox wallet and enjoy ultimate convenience.</div>
+					<div class="headlessSummary">You're safe and in control of your spending. We employ end-to-end encryption to guaranty your safety. Learn more at nairabox.com/security</div>
+					<button class="headlessButton" onclick="wallet.start(5)">ADD CARD NOW</button>
+				</div>
+				<div class="headlessFooter" id="skipBankCardLabel" onclick="views.hideFlash('advertiseBankCard')">NOT NOW</div>
+				<img src="images/bg_addcard.jpg" class="fullscreenBackground" />
+			</div>
+
+			<div id="addBankCard" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Add ATM/Bank Card</div>
+					<img class="right" src="images/icon_secure_lock.svg" />
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="addBankCardNumber" placeholder="Enter Card Number" class="textBox box needsclick" maxlength="23" />
+						<div class="sectionLabel left">EXPIRY MM/YY</div>
+						<div class="sectionLabel right" onclick="wallet.showCVVHelp()">WHAT'S CVV <img src="images/icon_help.svg" class="icon" /></div>
+						<div class="textBoxGroup clear">
+							<input type="tel" id="addBankCardMM" placeholder="MM" class="textBox box third needsclick" maxlength="2" />
+							<input type="tel" id="addBankCardYY" placeholder="YY" class="textBox box third needsclick" maxlength="2" />
+							<input type="tel" id="addBankCardCVV" placeholder="CVV" class="textBox box third last needsclick" />
+						</div>
+						<input type="tel" id="addBankCardPIN" placeholder="Enter Card PIN" class="textBox box pin needsclick" maxlength="4" />
+						<div class="sectionCaption center">Your card will be debited an amount less than <span id="addBankCardCharge"></span> and added to your nairabox Cash Balance.</div>
+						<button class="green" onclick="wallet.addBankCard()"><img src="images/icon_secure_lock.svg" class="icon" />Securely Add Card</button>
+					</div>
+				</div>
+				<div class="footerText">You're 100% Safe. Your payment information will be encrypted and processed by Interswitch.</div>
+			</div>
+
+			<div id="cardCVVHelp" class="view" data-statusbar="white">
+				<div class="content">
+					<img src="images/cvv_help.png" class="overlayIcon large" />
+					<div class="sectionTitle center">Where's my CVV?</div>
+				</div>
+				<div class="footerText">Your CVV is printed at the back of your ATM/Bank Card. It's the last 3-digit number as shown above.</div>
+			</div>
+
+			<div id="bankCardOTP" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Verify Bank Card</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="sectionText">Your bank requires further authorization. <span id="bankCardOTPMessage"></span></div>
+						<input type="number" id="bankCardOTPInput" placeholder="Enter OTP" class="textBox box needsclick" />
+						<button class="green" onclick="wallet.confirmCardOTP()"><img src="images/icon_secure_lock.svg" class="icon" />Continue</button>
+					</div>
+				</div>
+
+				<div id="bankCardOTPCancel" class="footerText" onclick="wallet.cancelCardOTP()" style="display: none;">Cancel &amp; Delete Card</div>
+			</div>
+
+			<div id="bankCardPINChallenge" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Re-Authorize Card</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="sectionText" id="bankCardPINChallengeMessage"></div>
+						<input type="tel" id="bankCardPINChallengePIN" placeholder="Enter Card PIN" class="textBox box pin needsclick" maxlength="4" />
+						<button class="green" onclick="wallet.confirmCardPIN()"><img src="images/icon_secure_lock.svg" class="icon" />Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="bankCardAuth" class="view" data-statusbar="white">
+				<div class="header green">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div class="title">Re-Authorize Card</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div class="sectionText" id="bankCardAuthMessage"></div>
+						<input type="tel" id="bankCardAuthCVV" placeholder="Enter Card CVV" class="textBox box needsclick" maxlength="3" />
+						<input type="tel" id="bankCardAuthPIN" placeholder="Enter Card PIN" class="textBox box pin needsclick" maxlength="4" />
+						<button class="green" onclick="wallet.confirmCardAuth()"><img src="images/icon_secure_lock.svg" class="icon" />Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="walletOptions" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList" onclick="wallet.selectWalletOption(1)">Add Cash from this Card</div>
+					<div class="buttonList extended red" onclick="wallet.selectWalletOption(2)">Remove this Card</div>
+				</div>
+			</div>
+
+			<div id="transactionComplete" class="view" data-statusbar="white" data-lock="true">
+				<img id="transactionIcon" src="images/icon_tick_white.svg" />
+				<div id="transactionTitle"></div>
+				<div id="transactionAmount"></div>
+				<div id="transactionFees"></div>
+				<div id="transactionBalance"></div>
+				<div id="transactionNotes"></div>
+				<div id="transactionSource">
+					<img id="transactionSourceType" src="" />
+					<div id="transactionSourceBank"></div>
+					<div id="transactionSourceInfo"></div>
+				</div>
+
+				<div class="footerButton" onclick="app.RenderAccount(true)">OKAY</div>
+			</div>
+
+			<div id="addFundsQT" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Add Cash via QuickTeller</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div>Visit <b>quickteller.com/nairabox</b> on your computer and use <b><span id="addFundsQTPhone"></span></b> as your Nairabox Phone Number.</div>
+						<div class="notice">You can add cash quicker by adding an ATM/Bank Card to your Nairabox wallet.</div>
+						<button class="green" onclick="wallet.start(5)"><img src="images/icon_secure_lock.svg" class="icon" />Add ATM/Bank Card</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="addFundsATM" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Add Funds at an ATM</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div>You can fund your account at ATMs by following these simple steps:</div>
+						<div class="bulletList">
+							<li>Insert your card into the ATM</li>
+							<li>Select "Pay Bills" or "QuickTeller"</li>
+							<li>Select "Others"</li>
+							<li>Input 04228301 as Biller Code</li>
+							<li>Input your Nairabox Phone Number</li>
+							<li>Verify your account name is correct</li>
+							<li>Input Amount</li>
+							<li>Input ATM/Bank Card PIN</li>
+							<li>Complete the Transaction</li>
+						</div>
+						<div class="notice">Adding funds at an ATM is available on QuickTeller-enabled ATMs nationwide.</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="addFundsBank" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Bank Transfer &amp; Cash Deposit</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div>You can fund your account by bank transfer or cash deposit into our bank account.</div>
+						<div class="bulletList">
+							<strong>Bank Transfer</strong>
+							<li>Use your Nairabox Phone Number as the Transaction Reference or Remark</li>
+							<hr />
+							<strong>Cash Deposit</strong>
+							<li>Use your Nairabox Phone Number as Name of Depositor</li>
+						</div>
+
+						<div>GTBank</div>
+						<div>Bill Collections Account (BCA)</div>
+						<div>Account Number: <strong>0179130457</strong></div>
+						<div class="notice">Your account will be credited within one hour.</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="donateInfo" class="view" data-statusbar="white">
+				<div class="scrollViewContent">
+					<div id="donateInfoTitle"></div>
+					<div id="donateInfoSummary"></div>
+					<button onclick="give.interact(1)">Donate to this Charity</button>
+					<button class="blue" onclick="give.interact(2)"><img src="images/icon_link.svg" class="icon" />Visit Website</button>
+					<button class="grey" onclick="views.hideOverlay()"><img src="images/button_close_white.svg" class="icon" />Close</button>
+				</div>
+			</div>
+
+			<div id="donateComplete" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">You're Donating to...</div>
+				</div>
+				<div class="scrollView">
+					<div class="content">
+						<img id="donationCharityPhoto" />
+						<div id="donationCharityName"></div>
+						<input type="tel" id="donationAmount" placeholder="Enter Amount to Donate" class="textBox" />
+						<input type="text" id="donationComment" placeholder="Write a comment (optional)" class="textBox" maxlength="80" />
+						<button onclick="give.send()">Make Donation</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="merchantSignIn" class="view" data-statusbar="black">
+				<div class="header">
+					<img class="left" onclick="views.back()" src="images/button_back.svg" />
+					<div class="title">Merchant Sign In</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="merchantUID" class="textBox" placeholder="Your Merchant ID" />
+						<input type="tel" id="merchantPIN" class="textBox pin" placeholder="Your Account PIN" />
+						<input type="tel" id="merchantTID" class="textBox" placeholder="Device Terminal ID" />
+						<button class="green" onclick="merchant.Authorize()">Sign In</button>
+						<button class="grey" onclick="views.back()">Cancel</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="merchantStart" class="view" data-statusbar="black" data-lock="true">
+				<div id="merchantInfoArea">
+					<img id="merchantLogo" />
+					<div id="merchantName"></div>
+				</div>
+				<div class="merchantSection" id="pay" onclick="merchant.startPayment()">
+					<img src="images/icon_beam_white.svg" />
+					<div>Accept Payment</div>
+				</div>
+				<div class="merchantSection" id="ticket" onclick="views.overlay('merchantTicketOptions', 50)">
+					<img src="images/icon_ticket.svg" />
+					<div>Redeem Ticket</div>
+				</div>
+			</div>
+
+			<div id="merchantPayment" class="view" data-statusbar="black">
+				<div class="header">
+					<div class="title">Accept Payment</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="merchantPaymentAmount" class="textBox big" placeholder="Enter Amount Due" />
+						<button class="green" onclick="merchant.scanToken()">ACCEPT</button>
+						<button class="grey" onclick="views.back()">CANCEL</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="merchantPaymentComplete" class="view" data-statusbar="black">
+				<div id="paymentStatusTitle">Payment Successful</div>
+				<img id="paymentStatusPhoto" />
+				<div id="paymentStatusName"></div>
+				<div class="paymentStatusAmount">
+					<span id="paymentStatusCurrency" class="currency"></span>
+					<span id="paymentStatusAmount"></span>
+				</div>
+				<div id="paymentStatusBirthday"></div>
+				<button id="paymentStatusOkay" onclick="views.impose('merchantStart')">OKAY</button>
+			</div>
+
+			<div id="merchantTicketOptions" class="view" data-statusbar="white">
+				<div class="content">
+					<div class="buttonList large" onclick="merchant.FindTicket(1)">Scan Digital Ticket</div>
+					<div class="buttonList extended large" onclick="merchant.FindTicket(2)">Enter a Phone Number</div>
+				</div>
+			</div>
+
+			<div id="merchantTicketPhone" class="view" data-statusbar="black">
+				<div class="header">
+					<div class="title">Find Ticket</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<input type="tel" id="merchantTicketPhoneNumber" class="textBox big" placeholder="Customer's Phone Number" />
+						<button class="green" onclick="merchant.DoFindTicket()">Find Ticket</button>
+						<button class="grey" onclick="views.back()">Cancel</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="merchantTicketInfo" class="view" data-statusbar="black">
+				<div class="header">
+					<div class="title">Digital Ticket</div>
+				</div>
+
+				<div class="scrollView">
+					<div class="content">
+						<div id="merchantTicketTitle"></div>
+						<div id="merchantTicketDate"></div>
+						<div id="merchantTicketValidity"></div>
+						<div id="merchantTicketList"></div>
+					</div>
+					<div id="merchantTicketActions">
+						<button id="merchantTicketRedeem" class="green" onclick="merchant.RedeemTicket()">ISSUE TICKET</button>
+						<button class="grey" onclick="merchant.GoHome()">CANCEL</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="uberStart" class="view" data-statusbar="white">
+				<div class="container">
+					<img class="brand" src="images/uber_brand.svg" />
+					<div class="uberWith">with</div>
+					<img class="brand" src="images/nairabox_brand.svg" />
+					<div class="uberCaption">Paying for your rides with nairabox is stress-free.</div>
+					<div class="uberLinkNote">Connect your UBER account and let's go!</div>
+					<button onclick="uber.linkAccount()">
+						<img class="icon" src="images/icon_uber.svg" />
+						<b>CONNECT UBER</b>
+					</button>
+					<div onclick="views.hideOverlay()" class="uberCancel">CANCEL</div>
+				</div>
+
+				<img id="uberCar" src="images/uber_car.png" />
+			</div>
+
+			<div id="uberAccount" class="view" data-statusbar="white">
+				<div class="header vanilla">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<img class="imageTitle" src="images/uber_brand.svg" />
+				</div>
+
+				<div class="scrollView">
+					<div id="uberUserArea">
+						<img id="uberPhoto" />
+						<div id="uberStatusArea">
+							<div id="uberName"></div>
+							<div id="uberLinkStatus"><img src="images/icon_tick.svg" />Connected</div>
+						</div>
+					</div>
+					<div id="uberPromotion">You get money back <b>every single time</b> you ride with nairabox.</div>
+					<button id="uberRequestRide" onclick="window.open('uber://', '_system')">REQUEST A RIDE NOW</button>
+				</div>
+			</div>
+
+			<div id="invite" class="view" data-statusbar="white">
+				<div class="headlessTitle">Invite Friends</div>
+				<div class="headlessContainer">
+					<div class="headlessSummary spaced">Your invite code is</div>
+					<div id="inviteCode"></div>
+					<div class="headlessCaption spaced" id="inviteMessage">nairabox is more fun with friends! Invite your friends to join you on nairabox.</div>
+					<button class="inviteButton headlessButton" onclick="friends.shareInviteCode()">INVITE FRIENDS</button>
+					<!--<div class="headlessSummary">You've invited <span id="inviteCount"></span> and gotten</div>
+					<div id="inviteReward"></div>-->
+				</div>
+				<div class="headlessFooter" id="skipInviteLabel" onclick="friends.hideInviteCode()">NOT NOW</div>
+			</div>
+
+			<div id="musicPlayer" class="view" data-statusbar="white" data-lock="true">
+				<div id="musicContainer">
+					<img src="images/button_back_white.svg" id="musicExit" onclick="music.exit()" />
+					<img src="images/nairabox_music.svg" id="musicLogo" />
+					<img src="images/busy_image.svg" id="musicArtwork" />
+
+					<div id="musicTitle"></div>
+					<div id="musicArtiste"></div>
+				</div>
+
+				<div id="musicProgress">
+					<div id="musicTimeElapsed" class="musicTime"></div>
+					<div id="musicTimeDuration" class="musicTime"></div>
+					<div id="musicProgressBar" class="musicProgressBar"></div>
+					<div class="musicProgressBar"></div>
+				</div>
+
+				<div id="musicButtons">
+					<img src="images/button_like.svg" id="musicLike" class="musicButton" onclick="music.like()" />
+					<img src="images/button_play.svg" id="musicControl" class="musicButton" onclick="music.playPause()" />
+					<img src="images/button_share.svg" id="musicShare" class="musicButton" onclick="music.share()" />
+				</div>
+
+				<img src="images/bg_music.jpg" class="fullscreenBackground" />
+			</div>
+
+			<div id="updateAvailable" class="view" data-statusbar="white" data-lock="true">
+				<div class="box">
+					<div class="icon"><img src="images/button_refresh_white.svg" width="100%" /></div>
+					<div class="title">UDPATE AVAILABLE</div>
+					<div class="summary" id="updateAvailableMessage"></div>
+				</div>
+				<button onclick="updater.startUpdate()">UPDATE NOW</button>
+				<div class="footerButton" id="updateAvailableSkip" onclick="app.LaunchApp()">NOT NOW</div>
+			</div>
+
+			<div id="updateProgress" class="view" data-statusbar="white" data-lock="true">
+				<div class="box">
+					<div class="icon">
+						<div id="updateProgressCount">63%</div>
+						<img id="updateProgressSpinner" src="images/button_refresh_white.svg" style="width:9em" />
+					</div>
+					<div id="updateProgressStatus" class="title"></div>
+					<div class="summary" id="updateProgressMessage"></div>
+				</div>
+			</div>
+
+			<div id="geolocationRequest" class="view" data-statusbar="black">
+				<div class="highlight">
+					<img src="images/icon_geolocation.svg" class="icon" />
+					<div class="caption">Enable Location</div>
+					<div class="summary">We want to show you only what's relevant to your location with great offers and amazing discounts.</div>
+					<button class="plum" onclick="geolocation.getPosition(1)">ALLOW</button>
+					<div class="comment">Certain nairabox features only work when location sharing is enabled.</div>
+				</div>
+				<div class="footerButton" onclick="views.hideFlash('geolocationRequest')">NOT NOW</div>
+			</div>
+
+			<div id="geolocationUpdate" class="view" data-statusbar="black">
+				<div class="highlight">
+					<img src="images/element_airplane.png" class="icon" />
+					<div class="subcaption">You're welcome to</div>
+					<div class="block plum" id="geolocationUpdateLocation"></div>
+					<div class="summary" id="geolocationUpdateMessage"></div>
+					<button class="plum" onclick="views.hideFlash('geolocationUpdate')">Thanks!</button>
+				</div>
+			</div>
+
+			<div id="foodStores" class="view" data-statusbar="white">
+				<div class="header purple">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<img class="foodTitle" src="images/food_brand.svg" />
+				</div>
+
+				<div id="foodScrollView" class="scrollView">
+					<div id="foodUserInfo">
+						<div id="foodUserLocation" onclick="food.showLocationSelector()"></div>
+						<div id="foodUserPoints"></div>
+					</div>
+
+					<div id="foodStoresArea"></div>
+				</div>
+			</div>
+
+			<div id="foodStoreMenu" class="view" data-statusbar="white">
+				<div class="header purple">
+					<img class="left" onclick="views.back()" src="images/button_back_white.svg" />
+					<div id="foodStoreTitle" class="title"></div>
+				</div>
+
+				<div id="foodScrollView" class="scrollView">
+					<div id="foodMenuArea"></div>
+				</div>
+
+				<div id="foodBar" onclick="food.showBasket()">
+					<div id="foodBarBasket">
+						<span id="foodBarCount"></span> ›
+						<span id="foodBarPrice"></span>
+					</div>
+					<div id="foodBarCheckout">CHECKOUT</div>
+				</div>
+			</div>
+
+			<div id="foodDescription" class="view" data-statusbar="white">
+				<div id="foodDescriptionArea" class="scrollViewAbsolute">
+					<img id="foodDescriptionImage" />
+					<img class="placeholder" src="images/food_large_placeholder.svg" />
+
+					<div id="foodDescriptionTitleBar">
+						<span id="foodDescriptionTitle"></span>
+						<img class="share" src="images/button_share.png" onclick="food.share()" />
+					</div>
+					<div id="foodDescriptionSummary"></div>
+				</div>
+				<img id="foodDescriptionAdd" src="images/button_add_bag.png" onclick="food.addToBasket()" />
+			</div>
+
+			<div id="foodBasket" class="view" data-statusbar="black" data-lock="true" data-blockexit="true" data-unlockkey="food.cancelCheckout()">
+				<div class="header yellow">
+					<img class="left" onclick="food.cancelCheckout()" src="images/button_close_black.svg" />
+					<div class="title bold">CHECKOUT</div>
+				</div>
+
+				<div id="foodBasketListContainer" class="scrollView">
+					<div id="foodBasketCheckoutArea">
+						<div id="toAddress" data-addressid="" onclick="food.showAddressBook()">Choose Delivery Address</div>
+						<div id="tranxoTitle">DELIVERY BY TRANXO</div>
+						<img id="tranxoIcon" src="images/icon_tranxo.svg" />
+						<div id="foodBasketDeliveryCost"></div>
+						<!-- <img id="payButton" src="images/button_beam.png" onclick="food.checkout()" /> -->
+						<img id="payButton" src="images/button_beam.png" onclick="food.showCheckoutOptions()" />
+						<div id="foodBasketTotal"></div>
+					</div>
+					<div id="foodBasketList"></div>
+				</div>
+			</div>
+
+			<div id="foodAddressBook" class="view" data-statusbar="white">
+				<div id="foodAddressBookList" class="scrollViewAbsolute"></div>
+			</div>
+
+			<div id="checkoutOptions" class="view" data-statusbar="white">
+				<div id="checkoutOptionsList" class="scrollViewAbsolute"></div>
+			</div>
+
+			<div id="foodAddAddress" class="view" data-statusbar="white">
+				<div class="headlessTitle">Add a New Address</div>
+				<div class="headlessContainer">
+					<input id="addAddressStreet" class="textBox capitals white" placeholder="Enter Street" />
+					<select id="addAddressCity" class="textBox select white"></select>
+					<select id="addAddressState" class="textBox select white">
+						<option value="">Select State</option>
+						<option value="Lagos">Lagos</option>
+						<option value="Abuja">Abuja</option>
+					</select>
+					<button class="headlessButton" onclick="food.addAddress(1)">Save Address</button>
+				</div>
+				<div class="headlessFooter" onclick="views.hideDropDown('foodAddAddress')">Cancel</div>
+			</div>
+
+			<div id="foodOrderComplete" class="view" data-statusbar="white" data-lock="true">
+				<div class="headlessTitle">Thanks for your order</div>
+				<div class="headlessContainer">
+					<img class="headlessIcon" src="images/food_logo.svg" />
+					<div class="headlessHeadline" id="foodOrderCompleteHeadline">We'll get you munching in a few minutes.</div>
+					<div class="headlessCaption" id="foodOrderCompleteCaption"></div>
+					<button id="foodOrderCompleteButton" class="headlessButton" onclick="app.RenderAccount(true)">OKAY</button>
+				</div>
+				<div class="headlessFooter" id="foodOrderCompleteTime">Kindly expect your food in 35 mins or less.</div>
+			</div>
+
+			<div id="foodLocator" class="view" data-statusbar="white">
+				<div class="scrollViewAbsolute">
+					<img src="images/food_selector.jpg" width="100%" />
+					<div id="foodLocatorList"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<audio id="soundPlayer" src=""></audio>
+
+		<script src="cordova.js"></script>
+
+		<script src="views/views.js"></script>
+		<script src="assets/swipe.js"></script>
+		<script src="assets/push.js"></script>
+		<script src="assets/fastclick.js"></script>
+		<script src="assets/rewards.js"></script>
+		<script src="assets/transfer.js"></script>
+		<script src="assets/contacts.js"></script>
+		<script src="assets/give.js"></script>
+		<script src="assets/beneficiaries.js"></script>
+		<script src="assets/bills.js"></script>
+		<script src="assets/airtime.js"></script>
+		<script src="assets/settings.js"></script>
+		<script src="assets/qrcode.js"></script>
+		<script src="assets/tickets.js"></script>
+		<script src="assets/beam.js"></script>
+		<script src="assets/wallet.js"></script>
+		<script src="assets/sound.js"></script>
+		<script src="assets/merchant.js"></script>
+		<script src="assets/ads.js"></script>
+		<script src="assets/music.js"></script>
+		<script src="assets/cache.js"></script>
+		<script src="assets/browser.js"></script>
+		<script src="assets/uber.js"></script>
+		<script src="assets/updater.js"></script>
+		<script src="assets/encryption.js"></script>
+		<script src="assets/friends.js"></script>
+		<script src="assets/geolocation.js"></script>
+		<script src="assets/tracker.js"></script>
+		<script src="assets/food.js"></script>
+
+		<script src="gsap/css.js"></script>
+		<script src="gsap/easepack.js"></script>
+		<script src="gsap/tweenlite.js"></script>
+		<script src="gsap/scrollto.js"></script>
+
+		<script src="assets/app.js"></script>
+
+	</body>
+</html>

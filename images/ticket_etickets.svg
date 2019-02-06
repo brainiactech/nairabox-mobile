@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="48px" viewBox="0 0 33 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-7" transform="translate(-172.000000, -438.000000)">
+            <path d="M173,444.990099 C173,441.681859 175.683331,439 178.995481,439 L198.004519,439 C201.315732,439 204,441.688856 204,444.990099 L204,479.009901 C204,482.318141 201.316669,485 198.004519,485 L178.995481,485 C175.684268,485 173,482.311144 173,479.009901 L173,444.990099 Z M175,444 L202,444 L202,480 L175,480 L175,444 Z M184,441.5 C184,441.223858 184.230797,441 184.500436,441 L191.499564,441 C191.775947,441 192,441.231934 192,441.5 C192,441.776142 191.769203,442 191.499564,442 L184.500436,442 C184.224053,442 184,441.768066 184,441.5 Z" id="Combined-Shape" fill="#593C4D"></path>
+            <g id="Group" transform="translate(179.000000, 449.000000)" fill="#000000">
+                <path d="M12,2 L12,7 L17,7 L17,2 L12,2 Z M10,0 L19,0 L19,9 L10,9 L10,0 Z M13,3 L16,3 L16,6 L13,6 L13,3 Z" id="Combined-Shape"></path>
+                <path d="M2,2 L2,7 L7,7 L7,2 L2,2 Z M0,0 L9,0 L9,9 L0,9 L0,0 Z M3,3 L6,3 L6,6 L3,6 L3,3 Z" id="Combined-Shape-Copy-2"></path>
+                <rect id="Combined-Shape-Copy-5" x="12" y="12" width="5" height="5"></rect>
+                <path d="M2,12 L2,17 L7,17 L7,12 L2,12 Z M0,10 L9,10 L9,19 L0,19 L0,10 Z M3,13 L6,13 L6,16 L3,16 L3,13 Z" id="Combined-Shape-Copy-4"></path>
+            </g>
+            <rect id="Rectangle-4" fill="#4EB646" x="179" y="473" width="19" height="3"></rect>
+        </g>
+    </g>
+</svg>

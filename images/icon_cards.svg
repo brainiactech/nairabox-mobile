@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M35,66 L32.008788,66 C30.3455902,66 29,67.3446462 29,69.0033512 L29,72 L35,72 L35,66 Z M37,66 L42,66 L42,72 L37,72 L37,66 Z M44,66 L46.991212,66 C48.6529197,66 50,67.3423789 50,69.0033512 L50,72 L44,72 L44,66 Z M50,74 L50,76.9966488 C50,78.6553538 48.6544098,80 46.991212,80 L44,80 L44,74 L50,74 Z M42,80 L37,80 L37,74 L42,74 L42,80 Z M35,80 L32.008788,80 C30.3470803,80 29,78.6576211 29,76.9966488 L29,74 L35,74 L35,80 Z M20,43.0007601 C20,38.0297776 24.0261818,34 29.0029416,34 L99.9970584,34 C104.969246,34 109,38.0259709 109,43.0007601 L109,85.9992399 C109,90.9702224 104.973818,95 99.9970584,95 L29.0029416,95 C24.0307542,95 20,90.9740291 20,85.9992399 L20,43.0007601 Z M22,47 L107,47 L107,57 L22,57 L22,47 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+    </g>
+</svg>

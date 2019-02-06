@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100px" height="72px" viewBox="0 0 100 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>back_ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="History" sketch:type="MSArtboardGroup" transform="translate(-26.000000, -63.000000)" fill="#333333">
+            <path d="M40.1213203,101 L87.4993708,101 C88.3367225,101 89,100.328427 89,99.5 C89,98.6657972 88.3281454,98 87.4993708,98 L40.2132034,98 L53.0302984,85.182905 C53.6202808,84.5929226 53.6170094,83.6464466 53.0312229,83.0606602 C52.4413525,82.4707897 51.4952751,82.4752877 50.908978,83.0615847 L36.0615847,97.908978 C35.9911932,97.9793695 35.9292468,98.0548357 35.8757272,98.1341586 L35.8757272,98.1341586 C35.3560412,98.370287 35,98.8930446 35,99.5 C35,100.078082 35.3226342,100.575293 35.7965444,100.826112 C35.8650306,100.954294 35.9534036,101.074724 36.0615847,101.182905 L50.908978,116.030298 C51.4989605,116.620281 52.4454365,116.617009 53.0312229,116.031223 C53.6210934,115.441352 53.6165954,114.495275 53.0302984,113.908978 L40.1213203,101 Z" id="back_ICON" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

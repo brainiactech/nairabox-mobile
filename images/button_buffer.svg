@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-6" transform="translate(-157.000000, -583.000000)" fill="#FFFFFF">
+            <path d="M218.5,614 C218.5,597.155315 204.844685,583.5 188,583.5 C171.155315,583.5 157.5,597.155315 157.5,614 C157.5,630.844685 171.155315,644.5 188,644.5 C204.844685,644.5 218.5,630.844685 218.5,614 Z M160.5,614 C160.5,598.812169 172.812169,586.5 188,586.5 C203.187831,586.5 215.5,598.812169 215.5,614 C215.5,629.187831 203.187831,641.5 188,641.5 C172.812169,641.5 160.5,629.187831 160.5,614 Z" id="Oval"></path>
+        </g>
+    </g>
+</svg>

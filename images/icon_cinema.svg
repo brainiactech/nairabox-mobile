@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="286px" height="286px" viewBox="0 0 286 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <rect id="Rectangle-1" fill="#999999" sketch:type="MSShapeGroup" x="36" y="114" width="158" height="158" rx="21"></rect>
+        <path d="M285.851265,130.104017 C294.051998,121.903284 302.033012,124.560656 303.677542,136.040704 L318.935674,242.553898 C320.580122,254.033373 312.60783,262.006321 301.127781,260.361791 L194.614587,245.103659 C183.135112,243.459211 180.471657,235.483625 188.6779,227.277382 L285.851265,130.104017 Z" id="Rectangle-1-Copy" fill="#999999" sketch:type="MSShapeGroup" transform="translate(251.532526, 192.959763) rotate(-225.000000) translate(-251.532526, -192.959763) "></path>
+        <path d="M62,73 L62,73 C68.0751322,73 73,68.0751322 73,62 C73,55.9248678 68.0751322,51 62,51 C55.9248678,51 51,55.9248678 51,62 C51,68.0751322 55.9248678,73 62,73 L62,73 Z M62,115 L62,115 C32.7289083,115 9,91.2710917 9,62 C9,32.7289083 32.7289083,9 62,9 C91.2710917,9 115,32.7289083 115,62 C115,91.2710917 91.2710917,115 62,115 L62,115 Z" id="Shape" fill="#999999" sketch:type="MSShapeGroup"></path>
+        <path d="M167,73 L167,73 C173.075132,73 178,68.0751322 178,62 C178,55.9248678 173.075132,51 167,51 C160.924868,51 156,55.9248678 156,62 C156,68.0751322 160.924868,73 167,73 L167,73 Z M167,115 L167,115 C137.728908,115 114,91.2710917 114,62 C114,32.7289083 137.728908,9 167,9 C196.271092,9 220,32.7289083 220,62 C220,91.2710917 196.271092,115 167,115 L167,115 Z" id="Shape" fill="#999999" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>
