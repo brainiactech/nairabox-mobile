@@ -29,7 +29,7 @@
 	<preference name="deployment-target" value="8.0" />
 	<preference name="android-build-tool" value="gradle" />
 	<preference name="android-minSdkVersion" value="14" />
-	<preference name="android-targetSdkVersion" value="24" />
+	<preference name="android-targetSdkVersion" value="23" />
 	<preference name="DisallowOverscroll" value="true" />
 	<preference name="YouTubeDataApiKey" value="AIzaSyDVJGZX8-laLBH0j8_0-Yzlwma2IeL9Q9k" />
 
@@ -49,7 +49,7 @@
 	<plugin name="cordova-plugin-whitelist" />
 	<plugin name="cordova-plugin-insomnia" />
 	<plugin name="cordova-plugin-keyboard" />
-	<plugin name="cordova-plugin-x-socialsharing" />
+	<plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.4.0" />
 	<plugin name="cordova-plugin-x-toast" />
 	<plugin name="cordova-plugin-geolocation" />
 	<plugin name="cordova-plugin-mixpanel" spec="2.2.1" />
